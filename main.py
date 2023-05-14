@@ -9,6 +9,15 @@ class HTMLRequest(BaseModel):
     html: str
 
 
+class Msg(BaseModel):
+    msg: str
+
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World. Welcome to FastAPI!"}
+
+
 @app.post('/convert')
 async def convert_to_pdf(request: Request, html_request: HTMLRequest):
     html_content = html_request.html
